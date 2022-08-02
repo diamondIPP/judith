@@ -1,180 +1,181 @@
 CC = g++
 CFLAGS = `root-config --cflags` -O2 -Wall
 LFLAGS = `root-config --ldflags --glibs` -O1
-OBJPATH = lib
+BUILD_DIR := build
 SRCPATH = src
 EXECUTABLE = Judith
-OBJECTS = $(OBJPATH)/configparser.o $(OBJPATH)/inputargs.o $(OBJPATH)/main.o $(OBJPATH)/examplelooper.o $(OBJPATH)/configloopers.o $(OBJPATH)/synchronize.o $(OBJPATH)/coarsealign.o $(OBJPATH)/processevents.o $(OBJPATH)/finealigndut.o $(OBJPATH)/looper.o $(OBJPATH)/coarsealigndut.o $(OBJPATH)/noisescan.o $(OBJPATH)/analysis.o $(OBJPATH)/finealign.o $(OBJPATH)/applymask.o $(OBJPATH)/analysisdut.o $(OBJPATH)/kartelconvert.o $(OBJPATH)/storageio.o $(OBJPATH)/event.o $(OBJPATH)/hit.o $(OBJPATH)/cluster.o $(OBJPATH)/track.o $(OBJPATH)/plane.o $(OBJPATH)/occupancy.o $(OBJPATH)/singleanalyzer.o $(OBJPATH)/hitinfo.o $(OBJPATH)/correlation.o $(OBJPATH)/dualanalyzer.o $(OBJPATH)/dutcorrelation.o $(OBJPATH)/depiction.o $(OBJPATH)/configanalyzers.o $(OBJPATH)/matching.o $(OBJPATH)/examplesingleanalyzer.o $(OBJPATH)/clusterinfo.o $(OBJPATH)/efficiency.o $(OBJPATH)/trackinfo.o $(OBJPATH)/dutdepiction.o $(OBJPATH)/dutresiduals.o $(OBJPATH)/residuals.o $(OBJPATH)/eventinfo.o $(OBJPATH)/syncfluctuation.o $(OBJPATH)/exampledualanalyzer.o $(OBJPATH)/sensor.o $(OBJPATH)/device.o $(OBJPATH)/alignment.o $(OBJPATH)/noisemask.o $(OBJPATH)/configmechanics.o $(OBJPATH)/trackmatcher.o $(OBJPATH)/trackmaker.o $(OBJPATH)/clustermaker.o $(OBJPATH)/eventdepictor.o $(OBJPATH)/configprocessors.o $(OBJPATH)/synchronizer.o $(OBJPATH)/processors.o $(OBJPATH)/largesynchronizer.o 
+OBJECTS = $(BUILD_DIR)/configparser.o $(BUILD_DIR)/inputargs.o $(BUILD_DIR)/main.o $(BUILD_DIR)/examplelooper.o $(BUILD_DIR)/configloopers.o $(BUILD_DIR)/synchronize.o $(BUILD_DIR)/coarsealign.o $(BUILD_DIR)/processevents.o $(BUILD_DIR)/finealigndut.o $(BUILD_DIR)/looper.o $(BUILD_DIR)/coarsealigndut.o $(BUILD_DIR)/noisescan.o $(BUILD_DIR)/analysis.o $(BUILD_DIR)/finealign.o $(BUILD_DIR)/applymask.o $(BUILD_DIR)/analysisdut.o $(BUILD_DIR)/kartelconvert.o $(BUILD_DIR)/storageio.o $(BUILD_DIR)/event.o $(BUILD_DIR)/hit.o $(BUILD_DIR)/cluster.o $(BUILD_DIR)/track.o $(BUILD_DIR)/plane.o $(BUILD_DIR)/occupancy.o $(BUILD_DIR)/singleanalyzer.o $(BUILD_DIR)/hitinfo.o $(BUILD_DIR)/correlation.o $(BUILD_DIR)/dualanalyzer.o $(BUILD_DIR)/dutcorrelation.o $(BUILD_DIR)/depiction.o $(BUILD_DIR)/configanalyzers.o $(BUILD_DIR)/matching.o $(BUILD_DIR)/examplesingleanalyzer.o $(BUILD_DIR)/clusterinfo.o $(BUILD_DIR)/efficiency.o $(BUILD_DIR)/trackinfo.o $(BUILD_DIR)/dutdepiction.o $(BUILD_DIR)/dutresiduals.o $(BUILD_DIR)/residuals.o $(BUILD_DIR)/eventinfo.o $(BUILD_DIR)/syncfluctuation.o $(BUILD_DIR)/exampledualanalyzer.o $(BUILD_DIR)/sensor.o $(BUILD_DIR)/device.o $(BUILD_DIR)/alignment.o $(BUILD_DIR)/noisemask.o $(BUILD_DIR)/configmechanics.o $(BUILD_DIR)/trackmatcher.o $(BUILD_DIR)/trackmaker.o $(BUILD_DIR)/clustermaker.o $(BUILD_DIR)/eventdepictor.o $(BUILD_DIR)/configprocessors.o $(BUILD_DIR)/synchronizer.o $(BUILD_DIR)/processors.o $(BUILD_DIR)/largesynchronizer.o 
 
 all: Judith
 
 Judith: $(OBJECTS)
 	$(CC) $(OBJECTS) $(LFLAGS) -o $(EXECUTABLE)
 
-$(OBJPATH)/configparser.o: $(SRCPATH)/configparser.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/configparser.cpp -o $(OBJPATH)/configparser.o
+$(BUILD_DIR)/configparser.o: $(SRCPATH)/configparser.cpp
+	mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $(SRCPATH)/configparser.cpp -o $(BUILD_DIR)/configparser.o
 
-$(OBJPATH)/inputargs.o: $(SRCPATH)/inputargs.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/inputargs.cpp -o $(OBJPATH)/inputargs.o
+$(BUILD_DIR)/inputargs.o: $(SRCPATH)/inputargs.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/inputargs.cpp -o $(BUILD_DIR)/inputargs.o
 
-$(OBJPATH)/main.o: $(SRCPATH)/main.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/main.cpp -o $(OBJPATH)/main.o
+$(BUILD_DIR)/main.o: $(SRCPATH)/main.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/main.cpp -o $(BUILD_DIR)/main.o
 
-$(OBJPATH)/examplelooper.o: $(SRCPATH)/loopers/examplelooper.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/examplelooper.cpp -o $(OBJPATH)/examplelooper.o
+$(BUILD_DIR)/examplelooper.o: $(SRCPATH)/loopers/examplelooper.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/examplelooper.cpp -o $(BUILD_DIR)/examplelooper.o
 
-$(OBJPATH)/configloopers.o: $(SRCPATH)/loopers/configloopers.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/configloopers.cpp -o $(OBJPATH)/configloopers.o
+$(BUILD_DIR)/configloopers.o: $(SRCPATH)/loopers/configloopers.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/configloopers.cpp -o $(BUILD_DIR)/configloopers.o
 
-$(OBJPATH)/synchronize.o: $(SRCPATH)/loopers/synchronize.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/synchronize.cpp -o $(OBJPATH)/synchronize.o
+$(BUILD_DIR)/synchronize.o: $(SRCPATH)/loopers/synchronize.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/synchronize.cpp -o $(BUILD_DIR)/synchronize.o
 
-$(OBJPATH)/coarsealign.o: $(SRCPATH)/loopers/coarsealign.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/coarsealign.cpp -o $(OBJPATH)/coarsealign.o
+$(BUILD_DIR)/coarsealign.o: $(SRCPATH)/loopers/coarsealign.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/coarsealign.cpp -o $(BUILD_DIR)/coarsealign.o
 
-$(OBJPATH)/processevents.o: $(SRCPATH)/loopers/processevents.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/processevents.cpp -o $(OBJPATH)/processevents.o
+$(BUILD_DIR)/processevents.o: $(SRCPATH)/loopers/processevents.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/processevents.cpp -o $(BUILD_DIR)/processevents.o
 
-$(OBJPATH)/finealigndut.o: $(SRCPATH)/loopers/finealigndut.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/finealigndut.cpp -o $(OBJPATH)/finealigndut.o
+$(BUILD_DIR)/finealigndut.o: $(SRCPATH)/loopers/finealigndut.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/finealigndut.cpp -o $(BUILD_DIR)/finealigndut.o
 
-$(OBJPATH)/looper.o: $(SRCPATH)/loopers/looper.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/looper.cpp -o $(OBJPATH)/looper.o
+$(BUILD_DIR)/looper.o: $(SRCPATH)/loopers/looper.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/looper.cpp -o $(BUILD_DIR)/looper.o
 
-$(OBJPATH)/coarsealigndut.o: $(SRCPATH)/loopers/coarsealigndut.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/coarsealigndut.cpp -o $(OBJPATH)/coarsealigndut.o
+$(BUILD_DIR)/coarsealigndut.o: $(SRCPATH)/loopers/coarsealigndut.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/coarsealigndut.cpp -o $(BUILD_DIR)/coarsealigndut.o
 
-$(OBJPATH)/noisescan.o: $(SRCPATH)/loopers/noisescan.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/noisescan.cpp -o $(OBJPATH)/noisescan.o
+$(BUILD_DIR)/noisescan.o: $(SRCPATH)/loopers/noisescan.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/noisescan.cpp -o $(BUILD_DIR)/noisescan.o
 
-$(OBJPATH)/analysis.o: $(SRCPATH)/loopers/analysis.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/analysis.cpp -o $(OBJPATH)/analysis.o
+$(BUILD_DIR)/analysis.o: $(SRCPATH)/loopers/analysis.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/analysis.cpp -o $(BUILD_DIR)/analysis.o
 
-$(OBJPATH)/finealign.o: $(SRCPATH)/loopers/finealign.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/finealign.cpp -o $(OBJPATH)/finealign.o
+$(BUILD_DIR)/finealign.o: $(SRCPATH)/loopers/finealign.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/finealign.cpp -o $(BUILD_DIR)/finealign.o
 
-$(OBJPATH)/applymask.o: $(SRCPATH)/loopers/applymask.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/applymask.cpp -o $(OBJPATH)/applymask.o
+$(BUILD_DIR)/applymask.o: $(SRCPATH)/loopers/applymask.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/applymask.cpp -o $(BUILD_DIR)/applymask.o
 
-$(OBJPATH)/analysisdut.o: $(SRCPATH)/loopers/analysisdut.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/analysisdut.cpp -o $(OBJPATH)/analysisdut.o
+$(BUILD_DIR)/analysisdut.o: $(SRCPATH)/loopers/analysisdut.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/loopers/analysisdut.cpp -o $(BUILD_DIR)/analysisdut.o
 
-$(OBJPATH)/kartelconvert.o: $(SRCPATH)/converters/kartelconvert.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/converters/kartelconvert.cpp -o $(OBJPATH)/kartelconvert.o
+$(BUILD_DIR)/kartelconvert.o: $(SRCPATH)/converters/kartelconvert.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/converters/kartelconvert.cpp -o $(BUILD_DIR)/kartelconvert.o
 
-$(OBJPATH)/storageio.o: $(SRCPATH)/storage/storageio.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/storageio.cpp -o $(OBJPATH)/storageio.o
+$(BUILD_DIR)/storageio.o: $(SRCPATH)/storage/storageio.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/storageio.cpp -o $(BUILD_DIR)/storageio.o
 
-$(OBJPATH)/event.o: $(SRCPATH)/storage/event.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/event.cpp -o $(OBJPATH)/event.o
+$(BUILD_DIR)/event.o: $(SRCPATH)/storage/event.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/event.cpp -o $(BUILD_DIR)/event.o
 
-$(OBJPATH)/hit.o: $(SRCPATH)/storage/hit.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/hit.cpp -o $(OBJPATH)/hit.o
+$(BUILD_DIR)/hit.o: $(SRCPATH)/storage/hit.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/hit.cpp -o $(BUILD_DIR)/hit.o
 
-$(OBJPATH)/cluster.o: $(SRCPATH)/storage/cluster.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/cluster.cpp -o $(OBJPATH)/cluster.o
+$(BUILD_DIR)/cluster.o: $(SRCPATH)/storage/cluster.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/cluster.cpp -o $(BUILD_DIR)/cluster.o
 
-$(OBJPATH)/track.o: $(SRCPATH)/storage/track.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/track.cpp -o $(OBJPATH)/track.o
+$(BUILD_DIR)/track.o: $(SRCPATH)/storage/track.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/track.cpp -o $(BUILD_DIR)/track.o
 
-$(OBJPATH)/plane.o: $(SRCPATH)/storage/plane.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/plane.cpp -o $(OBJPATH)/plane.o
+$(BUILD_DIR)/plane.o: $(SRCPATH)/storage/plane.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/storage/plane.cpp -o $(BUILD_DIR)/plane.o
 
-$(OBJPATH)/occupancy.o: $(SRCPATH)/analyzers/occupancy.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/occupancy.cpp -o $(OBJPATH)/occupancy.o
+$(BUILD_DIR)/occupancy.o: $(SRCPATH)/analyzers/occupancy.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/occupancy.cpp -o $(BUILD_DIR)/occupancy.o
 
-$(OBJPATH)/singleanalyzer.o: $(SRCPATH)/analyzers/singleanalyzer.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/singleanalyzer.cpp -o $(OBJPATH)/singleanalyzer.o
+$(BUILD_DIR)/singleanalyzer.o: $(SRCPATH)/analyzers/singleanalyzer.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/singleanalyzer.cpp -o $(BUILD_DIR)/singleanalyzer.o
 
-$(OBJPATH)/hitinfo.o: $(SRCPATH)/analyzers/hitinfo.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/hitinfo.cpp -o $(OBJPATH)/hitinfo.o
+$(BUILD_DIR)/hitinfo.o: $(SRCPATH)/analyzers/hitinfo.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/hitinfo.cpp -o $(BUILD_DIR)/hitinfo.o
 
-$(OBJPATH)/correlation.o: $(SRCPATH)/analyzers/correlation.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/correlation.cpp -o $(OBJPATH)/correlation.o
+$(BUILD_DIR)/correlation.o: $(SRCPATH)/analyzers/correlation.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/correlation.cpp -o $(BUILD_DIR)/correlation.o
 
-$(OBJPATH)/dualanalyzer.o: $(SRCPATH)/analyzers/dualanalyzer.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dualanalyzer.cpp -o $(OBJPATH)/dualanalyzer.o
+$(BUILD_DIR)/dualanalyzer.o: $(SRCPATH)/analyzers/dualanalyzer.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dualanalyzer.cpp -o $(BUILD_DIR)/dualanalyzer.o
 
-$(OBJPATH)/dutcorrelation.o: $(SRCPATH)/analyzers/dutcorrelation.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dutcorrelation.cpp -o $(OBJPATH)/dutcorrelation.o
+$(BUILD_DIR)/dutcorrelation.o: $(SRCPATH)/analyzers/dutcorrelation.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dutcorrelation.cpp -o $(BUILD_DIR)/dutcorrelation.o
 
-$(OBJPATH)/depiction.o: $(SRCPATH)/analyzers/depiction.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/depiction.cpp -o $(OBJPATH)/depiction.o
+$(BUILD_DIR)/depiction.o: $(SRCPATH)/analyzers/depiction.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/depiction.cpp -o $(BUILD_DIR)/depiction.o
 
-$(OBJPATH)/configanalyzers.o: $(SRCPATH)/analyzers/configanalyzers.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/configanalyzers.cpp -o $(OBJPATH)/configanalyzers.o
+$(BUILD_DIR)/configanalyzers.o: $(SRCPATH)/analyzers/configanalyzers.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/configanalyzers.cpp -o $(BUILD_DIR)/configanalyzers.o
 
-$(OBJPATH)/matching.o: $(SRCPATH)/analyzers/matching.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/matching.cpp -o $(OBJPATH)/matching.o
+$(BUILD_DIR)/matching.o: $(SRCPATH)/analyzers/matching.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/matching.cpp -o $(BUILD_DIR)/matching.o
 
-$(OBJPATH)/examplesingleanalyzer.o: $(SRCPATH)/analyzers/examplesingleanalyzer.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/examplesingleanalyzer.cpp -o $(OBJPATH)/examplesingleanalyzer.o
+$(BUILD_DIR)/examplesingleanalyzer.o: $(SRCPATH)/analyzers/examplesingleanalyzer.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/examplesingleanalyzer.cpp -o $(BUILD_DIR)/examplesingleanalyzer.o
 
-$(OBJPATH)/clusterinfo.o: $(SRCPATH)/analyzers/clusterinfo.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/clusterinfo.cpp -o $(OBJPATH)/clusterinfo.o
+$(BUILD_DIR)/clusterinfo.o: $(SRCPATH)/analyzers/clusterinfo.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/clusterinfo.cpp -o $(BUILD_DIR)/clusterinfo.o
 
-$(OBJPATH)/efficiency.o: $(SRCPATH)/analyzers/efficiency.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/efficiency.cpp -o $(OBJPATH)/efficiency.o
+$(BUILD_DIR)/efficiency.o: $(SRCPATH)/analyzers/efficiency.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/efficiency.cpp -o $(BUILD_DIR)/efficiency.o
 
-$(OBJPATH)/trackinfo.o: $(SRCPATH)/analyzers/trackinfo.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/trackinfo.cpp -o $(OBJPATH)/trackinfo.o
+$(BUILD_DIR)/trackinfo.o: $(SRCPATH)/analyzers/trackinfo.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/trackinfo.cpp -o $(BUILD_DIR)/trackinfo.o
 
-$(OBJPATH)/dutdepiction.o: $(SRCPATH)/analyzers/dutdepiction.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dutdepiction.cpp -o $(OBJPATH)/dutdepiction.o
+$(BUILD_DIR)/dutdepiction.o: $(SRCPATH)/analyzers/dutdepiction.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dutdepiction.cpp -o $(BUILD_DIR)/dutdepiction.o
 
-$(OBJPATH)/dutresiduals.o: $(SRCPATH)/analyzers/dutresiduals.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dutresiduals.cpp -o $(OBJPATH)/dutresiduals.o
+$(BUILD_DIR)/dutresiduals.o: $(SRCPATH)/analyzers/dutresiduals.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/dutresiduals.cpp -o $(BUILD_DIR)/dutresiduals.o
 
-$(OBJPATH)/residuals.o: $(SRCPATH)/analyzers/residuals.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/residuals.cpp -o $(OBJPATH)/residuals.o
+$(BUILD_DIR)/residuals.o: $(SRCPATH)/analyzers/residuals.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/residuals.cpp -o $(BUILD_DIR)/residuals.o
 
-$(OBJPATH)/eventinfo.o: $(SRCPATH)/analyzers/eventinfo.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/eventinfo.cpp -o $(OBJPATH)/eventinfo.o
+$(BUILD_DIR)/eventinfo.o: $(SRCPATH)/analyzers/eventinfo.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/eventinfo.cpp -o $(BUILD_DIR)/eventinfo.o
 
-$(OBJPATH)/syncfluctuation.o: $(SRCPATH)/analyzers/syncfluctuation.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/syncfluctuation.cpp -o $(OBJPATH)/syncfluctuation.o
+$(BUILD_DIR)/syncfluctuation.o: $(SRCPATH)/analyzers/syncfluctuation.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/syncfluctuation.cpp -o $(BUILD_DIR)/syncfluctuation.o
 
-$(OBJPATH)/exampledualanalyzer.o: $(SRCPATH)/analyzers/exampledualanalyzer.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/exampledualanalyzer.cpp -o $(OBJPATH)/exampledualanalyzer.o
+$(BUILD_DIR)/exampledualanalyzer.o: $(SRCPATH)/analyzers/exampledualanalyzer.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/analyzers/exampledualanalyzer.cpp -o $(BUILD_DIR)/exampledualanalyzer.o
 
-$(OBJPATH)/sensor.o: $(SRCPATH)/mechanics/sensor.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/sensor.cpp -o $(OBJPATH)/sensor.o
+$(BUILD_DIR)/sensor.o: $(SRCPATH)/mechanics/sensor.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/sensor.cpp -o $(BUILD_DIR)/sensor.o
 
-$(OBJPATH)/device.o: $(SRCPATH)/mechanics/device.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/device.cpp -o $(OBJPATH)/device.o
+$(BUILD_DIR)/device.o: $(SRCPATH)/mechanics/device.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/device.cpp -o $(BUILD_DIR)/device.o
 
-$(OBJPATH)/alignment.o: $(SRCPATH)/mechanics/alignment.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/alignment.cpp -o $(OBJPATH)/alignment.o
+$(BUILD_DIR)/alignment.o: $(SRCPATH)/mechanics/alignment.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/alignment.cpp -o $(BUILD_DIR)/alignment.o
 
-$(OBJPATH)/noisemask.o: $(SRCPATH)/mechanics/noisemask.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/noisemask.cpp -o $(OBJPATH)/noisemask.o
+$(BUILD_DIR)/noisemask.o: $(SRCPATH)/mechanics/noisemask.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/noisemask.cpp -o $(BUILD_DIR)/noisemask.o
 
-$(OBJPATH)/configmechanics.o: $(SRCPATH)/mechanics/configmechanics.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/configmechanics.cpp -o $(OBJPATH)/configmechanics.o
+$(BUILD_DIR)/configmechanics.o: $(SRCPATH)/mechanics/configmechanics.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/mechanics/configmechanics.cpp -o $(BUILD_DIR)/configmechanics.o
 
-$(OBJPATH)/trackmatcher.o: $(SRCPATH)/processors/trackmatcher.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/trackmatcher.cpp -o $(OBJPATH)/trackmatcher.o
+$(BUILD_DIR)/trackmatcher.o: $(SRCPATH)/processors/trackmatcher.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/trackmatcher.cpp -o $(BUILD_DIR)/trackmatcher.o
 
-$(OBJPATH)/trackmaker.o: $(SRCPATH)/processors/trackmaker.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/trackmaker.cpp -o $(OBJPATH)/trackmaker.o
+$(BUILD_DIR)/trackmaker.o: $(SRCPATH)/processors/trackmaker.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/trackmaker.cpp -o $(BUILD_DIR)/trackmaker.o
 
-$(OBJPATH)/clustermaker.o: $(SRCPATH)/processors/clustermaker.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/clustermaker.cpp -o $(OBJPATH)/clustermaker.o
+$(BUILD_DIR)/clustermaker.o: $(SRCPATH)/processors/clustermaker.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/clustermaker.cpp -o $(BUILD_DIR)/clustermaker.o
 
-$(OBJPATH)/eventdepictor.o: $(SRCPATH)/processors/eventdepictor.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/eventdepictor.cpp -o $(OBJPATH)/eventdepictor.o
+$(BUILD_DIR)/eventdepictor.o: $(SRCPATH)/processors/eventdepictor.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/eventdepictor.cpp -o $(BUILD_DIR)/eventdepictor.o
 
-$(OBJPATH)/configprocessors.o: $(SRCPATH)/processors/configprocessors.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/configprocessors.cpp -o $(OBJPATH)/configprocessors.o
+$(BUILD_DIR)/configprocessors.o: $(SRCPATH)/processors/configprocessors.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/configprocessors.cpp -o $(BUILD_DIR)/configprocessors.o
 
-$(OBJPATH)/synchronizer.o: $(SRCPATH)/processors/synchronizer.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/synchronizer.cpp -o $(OBJPATH)/synchronizer.o
+$(BUILD_DIR)/synchronizer.o: $(SRCPATH)/processors/synchronizer.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/synchronizer.cpp -o $(BUILD_DIR)/synchronizer.o
 
-$(OBJPATH)/processors.o: $(SRCPATH)/processors/processors.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/processors.cpp -o $(OBJPATH)/processors.o
+$(BUILD_DIR)/processors.o: $(SRCPATH)/processors/processors.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/processors.cpp -o $(BUILD_DIR)/processors.o
 
-$(OBJPATH)/largesynchronizer.o: $(SRCPATH)/processors/largesynchronizer.cpp
-	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/largesynchronizer.cpp -o $(OBJPATH)/largesynchronizer.o
+$(BUILD_DIR)/largesynchronizer.o: $(SRCPATH)/processors/largesynchronizer.cpp
+	$(CC) $(CFLAGS) -c $(SRCPATH)/processors/largesynchronizer.cpp -o $(BUILD_DIR)/largesynchronizer.o
 
 clean:
-	 rm $(OBJPATH)/*.o Judith
+	 rm $(BUILD_DIR)/*.o Judith
