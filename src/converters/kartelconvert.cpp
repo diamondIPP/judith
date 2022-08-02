@@ -427,7 +427,7 @@ void KartelConvert::writeFrame(bool invalid)
   Storage::Event* event = new Storage::Event(_numPlanes);
   event->setTimeStamp(timeStamp);
 //  event->setFrameNumber(_frame.number[0]);
-  event->setFrameNumber(_totalFrames);
+  event->setFrameNumber(_totalEvents);
   event->setTriggerOffset(_frame.triggerOffset);
   event->setTriggerInfo(_frame.consecCount);
   event->setInvalid(invalid);

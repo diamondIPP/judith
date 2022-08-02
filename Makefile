@@ -6,6 +6,8 @@ SRCPATH = src
 EXECUTABLE = Judith
 OBJECTS = $(BUILD_DIR)/configparser.o $(BUILD_DIR)/inputargs.o $(BUILD_DIR)/main.o $(BUILD_DIR)/examplelooper.o $(BUILD_DIR)/configloopers.o $(BUILD_DIR)/synchronize.o $(BUILD_DIR)/coarsealign.o $(BUILD_DIR)/processevents.o $(BUILD_DIR)/finealigndut.o $(BUILD_DIR)/looper.o $(BUILD_DIR)/coarsealigndut.o $(BUILD_DIR)/noisescan.o $(BUILD_DIR)/analysis.o $(BUILD_DIR)/finealign.o $(BUILD_DIR)/applymask.o $(BUILD_DIR)/analysisdut.o $(BUILD_DIR)/kartelconvert.o $(BUILD_DIR)/storageio.o $(BUILD_DIR)/event.o $(BUILD_DIR)/hit.o $(BUILD_DIR)/cluster.o $(BUILD_DIR)/track.o $(BUILD_DIR)/plane.o $(BUILD_DIR)/occupancy.o $(BUILD_DIR)/singleanalyzer.o $(BUILD_DIR)/hitinfo.o $(BUILD_DIR)/correlation.o $(BUILD_DIR)/dualanalyzer.o $(BUILD_DIR)/dutcorrelation.o $(BUILD_DIR)/depiction.o $(BUILD_DIR)/configanalyzers.o $(BUILD_DIR)/matching.o $(BUILD_DIR)/examplesingleanalyzer.o $(BUILD_DIR)/clusterinfo.o $(BUILD_DIR)/efficiency.o $(BUILD_DIR)/trackinfo.o $(BUILD_DIR)/dutdepiction.o $(BUILD_DIR)/dutresiduals.o $(BUILD_DIR)/residuals.o $(BUILD_DIR)/eventinfo.o $(BUILD_DIR)/syncfluctuation.o $(BUILD_DIR)/exampledualanalyzer.o $(BUILD_DIR)/sensor.o $(BUILD_DIR)/device.o $(BUILD_DIR)/alignment.o $(BUILD_DIR)/noisemask.o $(BUILD_DIR)/configmechanics.o $(BUILD_DIR)/trackmatcher.o $(BUILD_DIR)/trackmaker.o $(BUILD_DIR)/clustermaker.o $(BUILD_DIR)/eventdepictor.o $(BUILD_DIR)/configprocessors.o $(BUILD_DIR)/synchronizer.o $(BUILD_DIR)/processors.o $(BUILD_DIR)/largesynchronizer.o 
 
+$(info *** ROOTSYS:** $(ROOTSYS) ***)
+
 all: Judith
 
 Judith: $(OBJECTS)
