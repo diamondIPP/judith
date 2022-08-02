@@ -1,0 +1,15 @@
+[Sensor 0]
+offset x   : -1333.214611984
+offset y   : -2783.972064693
+offset z   : 18000.000000000
+rotation x : 0.000000000
+rotation y : 3.141592654
+rotation z : 3.138553225
+[End Sensor]
+
+[Device]
+slope x    : 0.000000000
+slope y    : 0.000000000
+sync ratio : 1.999821304
+[End Device]
+
