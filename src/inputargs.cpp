@@ -32,7 +32,7 @@ void InputArgs::usage()
   const unsigned int w1 = 16;
   cout << "\nCommands (required arguments, [optional arguments]):\n";
   cout << setw(w1) << "  convert"
-       << " : convert KarTel data (-i, -o, [-r, -n, -m])\n";
+       << " : convert KarTel data (-i, -o, [-r, -n, -m, -s])\n";
   cout << setw(w1) << "  synchronize"
        << " : synchronize DUT and ref. files (-i, -o, -I, -O, -r, -d, -t, [-n, -s])\n";
   cout << setw(w1) << "  noiseScan"

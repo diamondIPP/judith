@@ -141,9 +141,10 @@ public:
   ULong64_t _totalEvents;
   ULong64_t _totalFrames;
   ULong64_t _possibleDesync;
+  uint32_t _start_event;
 
   KartelConvert(const char* inputName, const char* outputName,
-                const char* mapping, const Mechanics::Device* device = 0);
+                const char* mapping, const Mechanics::Device* device = 0, uint32_t startEvent = 0);
   ~KartelConvert();
 
   int processEvent(bool discard = false);

@@ -282,7 +282,7 @@ void applyMask(const char* inputName, const char* outputName,
 }
 
 void convert(const char* input, const char* output, Long64_t triggers,
-             const char* readoutCfg, const char* deviceCfg = "")
+             const char* readoutCfg, const char* deviceCfg = "", const uint32_t startEvent = 0)
 {
   try
   {
@@ -293,7 +293,7 @@ void convert(const char* input, const char* output, Long64_t triggers,
       device = Mechanics::generateDevice(config);
       device->getNoiseMask()->readMask();
     }
-    Converters::KartelConvert convert(input, output, readoutCfg, device);
+    Converters::KartelConvert convert(input, output, readoutCfg, device, startEvent);
     convert.processFile(triggers);
   }
   catch (const char* e)
@@ -511,7 +511,8 @@ int main(int argc, char** argv)
                 inArgs.getOutputRef().c_str(),
                 inArgs.getNumEvents() ? inArgs.getNumEvents() : -1,
                 inArgs.getCfgReadout().c_str(),
-                inArgs.getCfgRef().c_str() );
+                inArgs.getCfgRef().c_str(),
+                inArgs.getEventOffset());
   }
   else if ( !inArgs.getCommand().compare("synchronize") )
   {

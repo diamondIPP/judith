@@ -550,7 +550,7 @@ int KartelConvert::processFile(Long64_t numEvents)
   {
     try
     {
-      processEvent();
+      processEvent(nevent >= _start_event);
     }
     catch (const char* e)
     {
@@ -705,14 +705,15 @@ int KartelConvert::SetMapping(const ConfigParser& config)
 }
 
 KartelConvert::KartelConvert(const char* fileName, const char* outputName,
-                             const char* readoutCfg, const Mechanics::Device* device) :
+                             const char* readoutCfg, const Mechanics::Device* device, const uint32_t startEvent) :
   _device(device),
   _ncols(1152),
   _nrows(576),
   _lineLength(8 * sizeof(Word)),
   _footer(0xAAAA),
   _sync(0xF),
-  _header(0x8001)
+  _header(0x8001),
+  _start_event(startEvent)
 {
   ConfigParser * config = new ConfigParser(readoutCfg);
   SetMapping(*config);
