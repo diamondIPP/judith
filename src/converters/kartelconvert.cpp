@@ -550,7 +550,7 @@ int KartelConvert::processFile(Long64_t numEvents)
   {
     try
     {
-      processEvent(nevent >= _start_event);
+      processEvent(nevent < _start_event);
     }
     catch (const char* e)
     {
